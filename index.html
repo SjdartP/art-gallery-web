@@ -12,15 +12,13 @@
             --text-color: #333333;
             --transition-speed: 0.5s;
         }
-        /* General styling */
         
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
-            font-size: 16px;
-            /* base font size */
+            font-size: 16px;    
         }
         
         header {
@@ -41,7 +39,6 @@
             color: #FFD700;
             filter: brightness(1.6);
             font-size: 4vw;
-            /* responsive font size */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
         }
         
@@ -82,10 +79,8 @@
             font-weight: normal;
             position: relative;
             font-size: 1rem;
-            /* responsive font size */
             transition: color var(--transition-speed), transform var(--transition-speed);
         }
-        /* Add underline effect */
         
         nav ul li a::after {
             content: '';
@@ -120,9 +115,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             font-size: 1.2rem;
-            /* responsive font size */
         }
-        /* Responsive Media Queries */
         
         @media (max-width: 1200px) {
             header h1 {
@@ -180,9 +173,7 @@
         
         .art-item {
             margin: 10px 30px;
-            /* Adjusted margin for spacing between items */
             width: 180px;
-            /* Initial width for larger screens */
             height: auto;
             position: relative;
             border-radius: 15px;
@@ -192,21 +183,18 @@
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s ease;
-            /* Smooth transition for the entire item */
         }
         /* Art Image Container */
         
         .art-img-container {
             flex-grow: 1;
             transition: transform 0.3s ease;
-            /* Transition for bending effect */
         }
         /* Art Title Container */
         
         .art-title-container {
             padding: 10px 0;
         }
-        /* Media query for tablet and smaller screens */
         
         @media (max-width: 768px) {
             .gallery-container {
@@ -214,14 +202,9 @@
             }
             .art-item {
                 width: calc(45% - 20px);
-                /* Set width to allow two items in a row */
-                /* Adjusted for tablets */
                 margin: 10px 5px;
-                /* Maintained spacing for tablets */
             }
-        }
-        /* Media query for mobile screens */
-        
+        }        
         @media (max-width: 480px) {
             .gallery-container {
                 justify-content: center;
@@ -229,71 +212,49 @@
             }
             .art-item {
                 width: calc(50% - 10px);
-                /* Ensure two items fit in one row with some spacing */
                 margin: 5px;
-                /* Adjust margin for better spacing */
             }
             .art-img-container img {
                 width: 100%;
-                /* Make the image responsive */
                 height: 80px;
-                /* Further reduced height for a more compact view */
                 object-fit: cover;
-                /* Ensures the image maintains its aspect ratio */
             }
             .art-title-container h3 {
                 font-size: 0.9rem;
-                /* Reduce the font size */
                 padding: 5px;
                 margin-top: 5px;
             }
         }
-        /* Art Image Styles */
         
         .art-img-container img {
             width: 100%;
             height: 240px;
-            /* Adjusted height */
             object-fit: cover;
             border-radius: 15px;
             border: 3px solid transparent;
-            /* Initial transparent border */
             box-sizing: border-box;
-            /* Include border in image size */
             transition: border 0.3s ease, transform 0.3s ease;
-            /* Smooth transition for border and bending */
             transform: rotate(5deg);
-            /* Default bend at 8 degrees */
         }
-        /* Cursor Hover Effect - Border and Art Name Color change simultaneously */
         
         .art-item:hover .art-img-container img {
             border-color: var(--main-color);
-            /* Golden border on hover */
             border-style: double;
-            /* Make the border visible */
             transform: rotate(0deg);
-            /* Return to straight position on hover */
             border-width: thick;
         }
         
         .art-item:hover .art-title-container h3 {
             color: var(--main-color);
-            /* Change to golden color on hover */
             transition: color 0.3s ease;
-            /* Smooth transition for color */
         }
-        /* Art title styling */
         
         .art-title-container h3 {
             font-size: 1.2rem;
-            /* Initial font size */
             margin-top: 0.5rem;
             color: rgb(128, 128, 128);
-            /* Initial color */
             text-align: center;
             transition: color 0.3s ease;
-            /* Smooth transition for color */
         }
         /* About Me Section */
         
@@ -303,7 +264,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Center-align content horizontally */
             text-align: center;
             padding-bottom: 20px;
             margin-bottom: 80px;
@@ -319,12 +279,9 @@
         
         .profile-picture {
             width: 80px;
-            /* Small size profile picture */
             height: 80px;
             border-radius: 50%;
-            /* Circular profile picture */
             margin-right: 15px;
-            /* Space between picture and heading */
         }
         
         #about p {
@@ -349,7 +306,7 @@
         .social-media a:hover {
             color: var(--main-color);
         }
-        /* Art Contest Win Section */
+        /* Art Events Section */
         
         #contest {
             opacity: 0;
@@ -386,7 +343,7 @@
             font-size: 1rem;
             color: #707070;
         }
-        /* Modal window for viewing images */
+        /* CSS for viewing images */
         
         #modal {
             display: none;
@@ -404,9 +361,7 @@
             text-align: center;
             margin-top: 10px;
             font-size: 2rem;
-            /* Increase this value to make the text larger */
             font-weight: bold;
-            /* Optional: Make the text bold */
         }
         
         #modal-content {
@@ -421,7 +376,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            /* Added to stack items vertically */
         }
         
         #modal img {
@@ -430,7 +384,6 @@
             display: block;
             object-fit: contain;
         }
-        /* Positioning the buttons to the center of the left and right sides of the modal */
         
         #close {
             position: absolute;
@@ -450,7 +403,6 @@
             transform: translateY(-50%);
             font-size: 2rem;
             background: rgba(0, 0, 0, 0.5);
-            /* semi-transparent black background */
             border: none;
             color: white;
             cursor: pointer;
@@ -730,6 +682,7 @@
             white-space: pre-wrap;
             overflow-wrap: break-word;
         }
+        /*footer*/
         
         footer {
             background-color: rgba(61, 61, 61, 0.8);
@@ -750,7 +703,6 @@
         
         .social-media {
             text-align: center;
-            /* Center the whole social media section */
             flex-basis: 33%;
             margin-bottom: 1rem;
         }
@@ -758,18 +710,14 @@
         .social-media h5 {
             margin-bottom: 10px;
             display: block;
-            /* Ensure the heading takes up its own line */
             text-align: center;
-            /* Center the heading */
         }
         
         .social-media-icons {
             display: flex;
             justify-content: center;
-            /* Center the icons horizontally */
             align-items: center;
             gap: 15px;
-            /* Add space between the icons */
         }
         
         .social-media a {
@@ -782,7 +730,6 @@
         
         .social-media img {
             width: 30px;
-            /* Icon size */
             height: 30px;
             transition: transform 0.3s ease-in-out;
         }
@@ -840,7 +787,6 @@
             font-size: 10px;
             color: #40c4de;
         }
-        /* Responsive design for smaller screens */
         
         @media screen and (max-width: 768px) {
             .footer-content {
@@ -853,7 +799,6 @@
             }
             .social-media-icons {
                 flex-wrap: wrap;
-                /* Wrap icons on smaller screens */
                 justify-content: center;
             }
             .center-info {
@@ -1187,7 +1132,7 @@
         </div>
     </section>
 
-    <!-- Art Contest Win Section -->
+    <!-- Art Event Section -->
     <section id="event">
         <h2>Art Journey Highlights</h2>
         <div class="contest-container">
@@ -1257,7 +1202,6 @@
             <button id="next">&gt;</button>
             <img src="" id="modal-img" alt="Artwork Image" width="500px" height="600px" style="display: block; margin: auto;">
             <div id="art-name" style="color: white; text-align: center; margin-top: 10px;"></div>
-            <!-- Art name display -->
         </div>
     </div>
     <h2 id="comments" class=" comments-title">Voices of praise</h2>
@@ -1361,9 +1305,7 @@
         </div>
     </footer>
 
-
     <script>
-        // Scroll animation for sections
         window.addEventListener('scroll', function() {
             document.querySelectorAll('section').forEach(function(section) {
                 let sectionTop = section.getBoundingClientRect().top;
@@ -1373,9 +1315,7 @@
                 }
             });
         });
-
-
-        // Modal functionality for My Art and Contest images
+        // Function to open the images
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
         const closeBtn = document.getElementById('close');
@@ -1385,9 +1325,8 @@
         const contestImages = document.querySelectorAll('.contest-img');
         const allImages = [...artImages, ...contestImages];
         let currentIndex = 0;
-        let currentCategory = " "; // Track current category
+        let currentCategory = " "; 
 
-        // Function to open the modal
         function openModal(index, category) {
             modal.style.display = 'block';
             let selectedImage;
@@ -1395,31 +1334,29 @@
             if (category === 'art') {
                 selectedImage = artImages[index];
                 modalImg.src = selectedImage.src;
-                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); // Get art name from data attribute
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); 
                 currentCategory = 'art';
                 currentIndex = index;
             } else if (category === 'contest') {
-                selectedImage = contestImages[index - artImages.length]; // Offset by the number of art images
+                selectedImage = contestImages[index - artImages.length]; 
                 modalImg.src = selectedImage.src;
-                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); // Get art name from data attribute
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); 
                 currentCategory = 'contest';
                 currentIndex = index - artImages.length;
             }
 
-            modalImg.style.animation = "fadeIn 0.5s"; // Optional fade-in effect
+            modalImg.style.animation = "fadeIn 0.5s"; 
         }
 
-        // Attach click event to My Art images
         artImages.forEach((img, index) => {
             img.addEventListener('click', () => {
                 openModal(index, 'art');
             });
         });
 
-        // Attach click event to Contest images
         contestImages.forEach((img, index) => {
             img.addEventListener('click', () => {
-                openModal(index + artImages.length, 'contest'); // Offset by the number of art images
+                openModal(index + artImages.length, 'contest'); 
             });
         });
 
@@ -1536,5 +1473,4 @@
     </script>
 
 </body>
-
 </html>
