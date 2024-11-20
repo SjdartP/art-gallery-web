@@ -1,0 +1,134 @@
+/* Art Contest Win Section */
+
+#contest {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+#contest.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contest-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contest-item {
+    margin: 1rem;
+    max-width: 300px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.contest-item img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.contest-item p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #707070;
+}
+
+
+/* Modal window for viewing images */
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#art-name {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 2rem;
+    /* Increase this value to make the text larger */
+    font-weight: bold;
+    /* Optional: Make the text bold */
+}
+
+#modal-content {
+    position: relative;
+    margin: auto;
+    top: 25px;
+    bottom: 25px;
+    height: 90%;
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Added to stack items vertically */
+}
+
+#modal img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+
+/* Positioning the buttons to the center of the left and right sides of the modal */
+
+#close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#prev,
+#next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    /* semi-transparent black background */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media(max-width: 480px) {
+    .contest-item p {
+        font-size: 1rem;
+    }
+}

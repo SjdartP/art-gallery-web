@@ -1,0 +1,171 @@
+/*feedback*/
+
+.feedback-container {
+    display: flex;
+    margin: 30px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    align-items: center;
+    height: 230px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .feedback-container {
+        flex-direction: column;
+        height: auto;
+    }
+    .like-dislike-section,
+    .feedback-form {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .thank-you-message {
+        margin-top: 15px;
+        width: 100%;
+    }
+    .like-dislike-buttons button {
+        width: 100%;
+    }
+}
+
+.like-dislike-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.like-dislike-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.like-dislike-buttons button {
+    background-color: transparent;
+    border: var(--main-color) solid 1px;
+    width: 100px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.like-dislike-buttons button:hover {
+    background-color: #729cff;
+    border: transparent;
+}
+
+.like-dislike-count {
+    display: none;
+    justify-content: space-between;
+    width: 120px;
+    margin-top: 5px;
+}
+
+.like-dislike-count span {
+    font-weight: bold;
+    color: #333;
+}
+
+.feedback-form,
+.thank-you-message {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    height: 80%;
+    width: 80%
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.feedback-form button {
+    background-color: #33b437;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    background-color: #68c96c;
+}
+
+.thank-you-message {
+    background-color: #d0d1fe;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.thank-you-message p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.thank-you-message h4 {
+    color: var(--main-color);
+    margin-top: 5px;
+}
+
+.feedback-list {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: none;
+}
+
+.feedback-item {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ffcc00;
+    border-radius: 5px;
+}
+
+.feedback-item h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.feedback-item p {
+    margin: 0;
+    color: #555;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+footer {
+    background-color: rgba(61, 61, 61, 0.8);
+    color: #fff;
+    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}

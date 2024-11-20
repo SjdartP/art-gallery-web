@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>art gallery</title>
+    <link rel="icon" href="app/9.png">
+    <style>
+         :root {
+            --main-color: #6b6fcf;
+            --text-color: #333333;
+            --transition-speed: 0.5s;
+        }
+        /* General styling */
+        
+        section {
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 2rem;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            /* responsive font size */
+        }
+        
+        .back-to-gallery-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            z-index: 100;
+        }
+        
+        .back-to-gallery-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            color: rgb(55, 55, 55);
+            background-color: #6b6ecf51;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+        /* Initially hide the text and move it off-screen */
+        
+        .back-to-gallery-btn .home-text {
+            transform: translateX(-100%);
+            /* Move the text out of view */
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
+            /* Smooth transition */
+            /* Smooth transition for moving the text */
+        }
+        /* On hover, bring the text back into view */
+        
+        .back-to-gallery-btn .home-text {
+            display: none;
+        }
+        
+        .back-to-gallery-btn:hover .home-text {
+            display: inline;
+            transform: translateX(0);
+            /* Move the text back into place */
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s;
+            /* Smooth transition */
+        }
+        
+        .to-gallery-btn:hover {
+            background-color: #ffffff00;
+            border-color: var(--main-color);
+            border-style: double;
+        }
+        
+        .home-icon {
+            width: 14px;
+            height: 14px;
+            filter: invert(100%);
+            transition: transform 0.3s ease;
+            margin: 4px;
+            /* Smooth transition for the logo */
+        }
+        /* Optional: Add a small effect to the logo on hover */
+        
+        .back-to-gallery-btn:hover .home-icon {
+            transform: scale(1.2);
+            /* Slightly enlarge the logo on hover */
+        }
+        
+        header {
+            text-align: center;
+            color: #6b6fcf;
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        /* My Art Section */
+        
+        #gallery {
+            opacity: 1;
+            transform: translateY(50px);
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        #gallery.visible {
+            opacity: 1;
+        }
+        
+        .gallery-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        
+        .art-item {
+            margin: 10px 30px;
+            /* Adjusted margin for spacing between items */
+            width: 180px;
+            /* Initial width for larger screens */
+            height: auto;
+            position: relative;
+            border-radius: 15px;
+            text-align: center;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            /* Smooth transition for the entire item */
+        }
+        
+        .art-title-container h3 {
+            font-size: 1.2rem;
+            /* Adjust font size as needed */
+            margin-top: 0.5rem;
+            color: rgb(128, 128, 128);
+            /* Text color */
+            text-align: center;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+            font-family: 'Arial', sans-serif;
+            /* Example font */
+            font-weight: bold;
+            /* Optional: Make the font bold */
+        }
+        /* Art Image Container */
+        
+        .art-img-container {
+            flex-grow: 1;
+            transition: transform 0.3s ease;
+            /* Transition for bending effect */
+        }
+        /* Art Title Container */
+        
+        .art-title-container {
+            padding: 10px 0;
+        }
+        /* Media query for tablet and smaller screens */
+        
+        @media (max-width: 768px) {
+            .gallery-container {
+                justify-content: center;
+            }
+            .art-item {
+                width: calc(45% - 20px);
+                /* Set width to allow two items in a row */
+                /* Adjusted for tablets */
+                margin: 10px 5px;
+                /* Maintained spacing for tablets */
+            }
+        }
+        /* Media query for mobile screens */
+        
+        @media (max-width: 480px) {
+            .gallery-container {
+                justify-content: center;
+                margin: 0px;
+            }
+            .art-item {
+                width: calc(50% - 10px);
+                /* Ensure two items fit in one row with some spacing */
+                margin: 5px;
+                /* Adjust margin for better spacing */
+            }
+            .art-img-container img {
+                width: 100%;
+                /* Make the image responsive */
+                height: 80px;
+                /* Further reduced height for a more compact view */
+                object-fit: cover;
+                /* Ensures the image maintains its aspect ratio */
+            }
+            .art-title-container h3 {
+                font-size: 0.9rem;
+                /* Reduce the font size */
+                padding: 5px;
+                margin-top: 5px;
+            }
+        }
+        /* Art Image Styles */
+        
+        .art-img-container img {
+            width: 100%;
+            height: 240px;
+            /* Adjusted height */
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid transparent;
+            /* Initial transparent border */
+            box-sizing: border-box;
+            /* Include border in image size */
+            transition: border 0.3s ease, transform 0.3s ease;
+            /* Smooth transition for border and bending */
+            transform: rotate(5deg);
+            /* Default bend at 8 degrees */
+        }
+        /* Cursor Hover Effect - Border and Art Name Color change simultaneously */
+        
+        .art-item:hover .art-img-container img {
+            border-color: var(--main-color);
+            /* Golden border on hover */
+            border-style: double;
+            /* Make the border visible */
+            transform: rotate(0deg);
+            /* Return to straight position on hover */
+            border-width: thick;
+        }
+        
+        .art-item:hover .art-title-container h3 {
+            color: var(--main-color);
+            /* Change to golden color on hover */
+            transition: color 0.3s ease;
+            /* Smooth transition for color */
+        }
+        /* Art title styling */
+        
+        .art-title-container h3 {
+            font-size: 1.2rem;
+            /* Initial font size */
+            margin-top: 0.5rem;
+            color: rgb(128, 128, 128);
+            /* Initial color */
+            text-align: center;
+            transition: color 0.3s ease;
+            /* Smooth transition for color */
+        }
+        /* Modal window for viewing images */
+        
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        #art-name {
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 2rem;
+            /* Increase this value to make the text larger */
+            font-weight: bold;
+            /* Optional: Make the text bold */
+        }
+        
+        #modal-content {
+            position: relative;
+            margin: auto;
+            top: 25px;
+            bottom: 25px;
+            height: 90%;
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* Added to stack items vertically */
+        }
+        
+        #modal img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        /* Positioning the buttons to the center of the left and right sides of the modal */
+        
+        #close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            /* semi-transparent black background */
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        #prev {
+            left: 20px;
+        }
+        
+        #next {
+            right: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Back to Gallery Button -->
+    <div class="back-to-gallery-container">
+        <a href="gal.html" class="back-to-gallery-btn">
+            <img src="app/home.png" alt="Home" class="home-icon">
+            <span class="home-text">Home</span>
+        </a>
+    </div>
+
+    <header>
+        <h1>Gallery</h1>
+    </header>
+
+    <!-- My Art Section -->
+    <section id="gallery">
+
+        <!-- Back to Gallery Button -->
+
+        <div class="gallery-container">
+            <!-- Art Item 1 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/clock and circle.jpg" alt="Clock and Circle" class="art-img" data-name="Clock and Circle">
+                </div>
+                <div class="art-title-container">
+                    <h3>Clock and Circle</h3>
+                </div>
+            </div>
+            <!-- Art Item 2 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/creative.jpg" alt="Creative piece" class="art-img" data-name="Creative piece">
+                </div>
+                <div class="art-title-container">
+                    <h3>Creative piece</h3>
+                </div>
+            </div>
+            <!-- Art Item 3 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/1st comic style.jpg" alt="Comic style" class="art-img" data-name="Comic style">
+                </div>
+                <div class="art-title-container">
+                    <h3>Comic style</h3>
+                </div>
+            </div>
+            <!-- Art Item 4 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/ocean palace.jpg" alt="Ocean palace" class="art-img" data-name="Ocean palace">
+                </div>
+                <div class="art-title-container">
+                    <h3>Ocean palace</h3>
+                </div>
+            </div>
+            <!-- Art Item 5 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Spiderman 1.jpg" alt="Spiderman" class="art-img" data-name="Spiderman">
+                </div>
+                <div class="art-title-container">
+                    <h3>Spiderman</h3>
+                </div>
+            </div>
+            <!-- Art Item 6 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/waste planet.jpg" alt="Waste planet" class="art-img" data-name="Waste planet">
+                </div>
+                <div class="art-title-container">
+                    <h3>Waste planet</h3>
+                </div>
+            </div>
+            <!-- Art Item 7 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/358.jpg" alt="Dreamscapes" class="art-img" data-name="Dreamscapes">
+                </div>
+                <div class="art-title-container">
+                    <h3>Dreamscapes</h3>
+                </div>
+            </div>
+            <!-- Art Item 8 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Water reflection.jpg" alt="Water reflection" class="art-img" data-name="Water reflection">
+                </div>
+                <div class="art-title-container">
+                    <h3>Water reflection</h3>
+                </div>
+            </div>
+            <!-- Art Item 9 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/80.jpg" alt="Sea best" class="art-img" data-name="Sea best">
+                </div>
+                <div class="art-title-container">
+                    <h3>Sea best</h3>
+                </div>
+            </div>
+            <!-- Art Item 10 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Window view Eiffel Tower.jpg" alt="Window view" class="art-img" data-name="Window view">
+                </div>
+                <div class="art-title-container">
+                    <h3>Window view</h3>
+                </div>
+            </div>
+            <!-- Art Item 11 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/507.jpg" alt="Moon hat" class="art-img" data-name="Moon hat">
+                </div>
+                <div class="art-title-container">
+                    <h3>Moon hat</h3>
+                </div>
+            </div>
+            <!-- Art Item 12 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/547.jpg" alt="Zombie captain" class="art-img" data-name="Zombie captain">
+                </div>
+                <div class="art-title-container">
+                    <h3>Zombie captain</h3>
+                </div>
+            </div>
+            <!-- Art Item 13 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/726.jpg" alt="Arcane" class="art-img" data-name="Arcane">
+                </div>
+                <div class="art-title-container">
+                    <h3>Arcane</h3>
+                </div>
+            </div>
+            <!-- Art Item 14 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/35.jpg" alt="Hexagon" class="art-img" data-name="Hexagon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Hexagon</h3>
+                </div>
+            </div>
+            <!-- Art Item 15 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/36.jpg" alt="SJD Intro" class="art-img" data-name="SJD Intro">
+                </div>
+                <div class="art-title-container">
+                    <h3>SJD Intro</h3>
+                </div>
+            </div>
+            <!-- Art Item 16 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/803.jpg" alt="Dream yard" class="art-img" data-name="Dream yard">
+                </div>
+                <div class="art-title-container">
+                    <h3>Dream yard</h3>
+                </div>
+            </div>
+            <!-- Art Item 17 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/skull land.jpg" alt="Skull land" class="art-img" data-name="Skull land">
+                </div>
+                <div class="art-title-container">
+                    <h3>Skull land</h3>
+                </div>
+            </div>
+            <!-- Art Item 18 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/SH.jpg" alt="Seahorse warrior" class="art-img" data-name="Seahorse warrior">
+                </div>
+                <div class="art-title-container">
+                    <h3>Seahorse warrior</h3>
+                </div>
+            </div>
+            <!-- Art Item 19 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/book lake.jpg" alt="Book lake" class="art-img" data-name="Book lake">
+                </div>
+                <div class="art-title-container">
+                    <h3>Book lake</h3>
+                </div>
+            </div>
+            <!-- Art Item 20 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/sweet land.jpg" alt="Sweet land" class="art-img" data-name="Sweet land">
+                </div>
+                <div class="art-title-container">
+                    <h3>Sweet land</h3>
+                </div>
+            </div>
+            <!-- Art Item 21 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/tarzan.jpg" alt="Tarzan" class="art-img" data-name="Tarzan">
+                </div>
+                <div class="art-title-container">
+                    <h3>Tarzan</h3>
+                </div>
+            </div>
+            <!-- Art Item 22 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/2023 newyear.jpg" alt="2023 Newyear" class="art-img" data-name="2023 Newyear">
+                </div>
+                <div class="art-title-container">
+                    <h3>2023 Newyear</h3>
+                </div>
+            </div>
+            <!-- Art Item 23 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/920.jpg" alt="Robo mosquito" class="art-img" data-name="Robo mosquito">
+                </div>
+                <div class="art-title-container">
+                    <h3>Robo mosquito</h3>
+                </div>
+            </div>
+            <!-- Art Item 24 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/908.jpg" alt="Mahito" class="art-img" data-name="Mahito">
+                </div>
+                <div class="art-title-container">
+                    <h3>Mahito</h3>
+                </div>
+            </div>
+            <!-- Art Item 25 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/852.jpg" alt="Cartoon avenger" class="art-img" data-name="Cartoon avenger">
+                </div>
+                <div class="art-title-container">
+                    <h3>Cartoon avenger</h3>
+                </div>
+            </div>
+            <!-- Art Item 26 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/egg.jpg" alt="Broken egg" class="art-img" data-name="Broken egg">
+                </div>
+                <div class="art-title-container">
+                    <h3>Broken egg</h3>
+                </div>
+            </div>
+            <!-- Art Item 27 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/kombu mela pattaapuchi.jpg" alt="Unlovely & Cute" class="art-img" data-name="Unlovely & Cute">
+                </div>
+                <div class="art-title-container">
+                    <h3>Unlovely & Cute</h3>
+                </div>
+            </div>
+            <!-- Art Item 28 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/802.jpg" alt="Jelly animal" class="art-img" data-name="Jelly animal">
+                </div>
+                <div class="art-title-container">
+                    <h3>Jelly animal</h3>
+                </div>
+            </div>
+            <!-- Art Item 29 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/kaaba.jpg" alt="Kaaba" class="art-img" data-name="Kaaba">
+                </div>
+                <div class="art-title-container">
+                    <h3>kaaba</h3>
+                </div>
+            </div>
+            <!-- Art Item 30 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Moon.jpg" alt="Creative moon" class="art-img" data-name="Creative moon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Creative moon</h3>
+                </div>
+            </div>
+            <!-- Art Item 31 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Cartoon.jpg" alt="Cartoon" class="art-img" data-name="Cartoon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Cartoon</h3>
+                </div>
+            </div>
+            <!-- Art Item 32 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/eggplant.jpg" alt="Eggplant" class="art-img" data-name="Eggplant">
+                </div>
+                <div class="art-title-container">
+                    <h3>Eggplant</h3>
+                </div>
+            </div>
+            <!-- Art Item 33 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/mecca medina.jpg" alt="Mecca medina" class="art-img" data-name="Mecca medina">
+                </div>
+                <div class="art-title-container">
+                    <h3>Mecca medina</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal for Viewing Images -->
+    <div id="modal">
+        <div id="modal-content">
+            <button id="close">&times;</button>
+            <button id="prev">&lt;</button>
+            <button id="next">&gt;</button>
+            <img src="" id="modal-img" alt="Artwork Image" width="500px" height="600px" style="display: block; margin: auto;">
+            <div id="art-name" style="color: white; text-align: center; margin-top: 10px;"></div>
+            <!-- Art name display -->
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality for My Art and Contest images
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.getElementById('close');
+        const nextBtn = document.getElementById('next');
+        const prevBtn = document.getElementById('prev');
+        const artImages = document.querySelectorAll('.art-img');
+        const contestImages = document.querySelectorAll('.contest-img');
+        const allImages = [...artImages, ...contestImages];
+        let currentIndex = 0;
+        let currentCategory = " "; // Track current category
+
+        // Function to open the modal
+        function openModal(index, category) {
+            modal.style.display = 'block';
+            let selectedImage;
+
+            if (category === 'art') {
+                selectedImage = artImages[index];
+                modalImg.src = selectedImage.src;
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); // Get art name from data attribute
+                currentCategory = 'art';
+                currentIndex = index;
+            } else if (category === 'contest') {
+                selectedImage = contestImages[index - artImages.length]; // Offset by the number of art images
+                modalImg.src = selectedImage.src;
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); // Get art name from data attribute
+                currentCategory = 'contest';
+                currentIndex = index - artImages.length;
+            }
+
+            modalImg.style.animation = "fadeIn 0.5s"; // Optional fade-in effect
+        }
+
+        // Attach click event to My Art images
+        artImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openModal(index, 'art');
+            });
+        });
+
+        // Attach click event to Contest images
+        contestImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openModal(index + artImages.length, 'contest'); // Offset by the number of art images
+            });
+        });
+
+        // Close modal button event
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Next button event
+        nextBtn.addEventListener('click', () => {
+            if (currentCategory === 'art') {
+                currentIndex = (currentIndex + 1) % artImages.length;
+                modalImg.src = artImages[currentIndex].src;
+                document.getElementById('art-name').textContent = artImages[currentIndex].getAttribute('data-name');
+            } else if (currentCategory === 'contest') {
+                currentIndex = (currentIndex + 1) % contestImages.length;
+                modalImg.src = contestImages[currentIndex].src;
+                document.getElementById('art-name').textContent = contestImages[currentIndex].getAttribute('data-name');
+            }
+        });
+
+        // Previous button event
+        prevBtn.addEventListener('click', () => {
+            if (currentCategory === 'art') {
+                currentIndex = (currentIndex - 1 + artImages.length) % artImages.length;
+                modalImg.src = artImages[currentIndex].src;
+                document.getElementById('art-name').textContent = artImages[currentIndex].getAttribute('data-name');
+            } else if (currentCategory === 'contest') {
+                currentIndex = (currentIndex - 1 + contestImages.length) % contestImages.length;
+                modalImg.src = contestImages[currentIndex].src;
+                document.getElementById('art-name').textContent = contestImages[currentIndex].getAttribute('data-name');
+            }
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
