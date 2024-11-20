@@ -7,12 +7,28 @@
     <title>SJD Art Gallery</title>
     <link rel="icon" href="app/9.png">
     <style>
+<<<<<<< HEAD
         /* Reset */
+=======
+         :root {
+            --main-color: #6b6fcf;
+            --text-color: #333333;
+            --transition-speed: 0.5s;
+        }
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
         
         body,
         html {
             margin: 0;
             padding: 0;
+<<<<<<< HEAD
+=======
+            scroll-behavior: smooth;
+            font-size: 16px;    
+        }
+        
+        header {
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -21,7 +37,20 @@
         }
         /* Background Animation */
         
+<<<<<<< HEAD
         .background {
+=======
+        header h1 {
+            font-family: 'Georgia', serif;
+            color: #FFD700;
+            filter: brightness(1.6);
+            font-size: 4vw;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+        
+        header::before {
+            content: '';
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             position: absolute;
             top: 0;
             left: 0;
@@ -50,9 +79,253 @@
         }
         /* Logo Image Animation */
         
+<<<<<<< HEAD
         .logo-image {
             width: 200px;
             height: auto;
+=======
+        nav ul li {
+            display: inline;
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: normal;
+            position: relative;
+            font-size: 1rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--main-color);
+            transition: width var(--transition-speed);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul:hover {
+            background-color: black;
+        }
+        
+        nav ul li a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+        
+        section {
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 5vw;
+            }
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+            section {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 10vw;
+            }
+            nav ul li a {
+                font-size: 0.8rem;
+            }
+            section {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 8vw;
+            }
+            nav ul li a {
+                font-size: 0.7rem;
+            }
+            section {
+                font-size: 0.9rem;
+            }
+        }
+        /* My Art Section */
+        
+        #gallery {
+            opacity: 1;
+            transform: translateY(50px);
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        #gallery.visible {
+            opacity: 1;
+        }
+        
+        .gallery-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        
+        .art-item {
+            margin: 10px 30px;
+            width: 180px;
+            height: auto;
+            position: relative;
+            border-radius: 15px;
+            text-align: center;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        /* Art Image Container */
+        
+        .art-img-container {
+            flex-grow: 1;
+            transition: transform 0.3s ease;
+        }
+        /* Art Title Container */
+        
+        .art-title-container {
+            padding: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-container {
+                justify-content: center;
+            }
+            .art-item {
+                width: calc(45% - 20px);
+                margin: 10px 5px;
+            }
+        }        
+        @media (max-width: 480px) {
+            .gallery-container {
+                justify-content: center;
+                margin: 0px;
+            }
+            .art-item {
+                width: calc(50% - 10px);
+                margin: 5px;
+            }
+            .art-img-container img {
+                width: 100%;
+                height: 80px;
+                object-fit: cover;
+            }
+            .art-title-container h3 {
+                font-size: 0.9rem;
+                padding: 5px;
+                margin-top: 5px;
+            }
+        }
+        
+        .art-img-container img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid transparent;
+            box-sizing: border-box;
+            transition: border 0.3s ease, transform 0.3s ease;
+            transform: rotate(5deg);
+        }
+        
+        .art-item:hover .art-img-container img {
+            border-color: var(--main-color);
+            border-style: double;
+            transform: rotate(0deg);
+            border-width: thick;
+        }
+        
+        .art-item:hover .art-title-container h3 {
+            color: var(--main-color);
+            transition: color 0.3s ease;
+        }
+        
+        .art-title-container h3 {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            color: rgb(128, 128, 128);
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        /* About Me Section */
+        
+        #about {
+            background-color: #e7e8fe;
+            transform: translateY(50px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 80px;
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        .about-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        #about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #4d4c4c;
+            margin-bottom: 20px;
+            max-width: 1200px;
+        }
+        
+        .social-media {
+            margin: 1rem 0;
+        }
+        
+        .social-media a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #686868;
+            font-size: 1.2rem;
+        }
+        
+        .social-media a:hover {
+            color: var(--main-color);
+        }
+        /* Art Events Section */
+        
+        #contest {
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             opacity: 0;
             transform: scale(1.2);
             animation: slideIn 2s ease-in-out forwards, zoomEffect 8s infinite;
@@ -80,6 +353,7 @@
         }
         /* Gallery Name Animation */
         
+<<<<<<< HEAD
         .gallery-name {
             font-size: 1.5rem;
             text-transform: uppercase;
@@ -97,13 +371,97 @@
             /* For non-webkit browsers */
             text-fill-color: transparent;
             /* For future compatibility */
+=======
+        .contest-item {
+            margin: 1rem;
+            max-width: 300px;
+            position: relative;
+            border-radius: 15px;
+        }
+        
+        .contest-item img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        
+        .contest-item p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #707070;
+        }
+        /* CSS for viewing images */
+        
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        #art-name {
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
         }
         /* Marvel-Like Divider */
         
+<<<<<<< HEAD
         .divider {
             width: 0;
             height: 1px;
             background: #4d4d4d;
+=======
+        #modal-content {
+            position: relative;
+            margin: auto;
+            top: 25px;
+            bottom: 25px;
+            height: 90%;
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        #modal img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        
+        #close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            cursor: pointer;
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             border-radius: 50%;
             opacity: 0;
             animation: expandDivider 2.5s ease-in-out 1s forwards;
@@ -121,25 +479,413 @@
         }
         /* Tagline Animation */
         
+<<<<<<< HEAD
         .tagline {
             font-size: 1.2rem;
             color: rgb(127, 127, 127);
+=======
+        .comments-title {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 50px;
+            color: var(--main-color);
+        }
+        
+        .comments-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap;
+            margin: 30px;
+        }
+        
+        @media (max-width: 1024px) {
+            .comments-container {
+                flex-wrap: wrap;
+            }
+            .comment {
+                width: calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .comments-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .comment {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 20px;
+            }
+        }
+        
+        .comment {
+            flex-shrink: 0;
+            width: 290px;
+            background-color: #e7e8fe;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .comment:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background-color: #f0f0f5;
+            border-color: var(--main-color);
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .comment:hover .profile-pic {
+            transform: scale(1.1);
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+            margin: 0;
+        }
+        
+        .comment:hover .name {
+            color: var(--main-color);
+        }
+        
+        .comment-text {
+            font-size: 17px;
+            color: #707070;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: normal;
+        }
+        
+        .person-link {
+            display: block;
+            font-size: 10px;
+            color: #707070;
+            text-decoration: none;
+            margin-top: 2px;
+        }
+        /*feedback*/
+        
+        .feedback-container {
+            display: flex;
+            margin: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            justify-content: space-between;
+            align-items: center;
+            height: 230px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .feedback-container {
+                flex-direction: column;
+                height: auto;
+            }
+            .like-dislike-section,
+            .feedback-form {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .thank-you-message {
+                margin-top: 15px;
+                width: 100%;
+            }
+            .like-dislike-buttons button {
+                width: 100%;
+            }
+        }
+        
+        .like-dislike-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .like-dislike-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .like-dislike-buttons button {
+            background-color: transparent;
+            border: var(--main-color) solid 1px;
+            width: 100px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .like-dislike-buttons button:hover {
+            background-color: #729cff;
+            border: transparent;
+        }
+        
+        .like-dislike-count {
+            display: none;
+            justify-content: space-between;
+            width: 120px;
+            margin-top: 5px;
+        }
+        
+        .like-dislike-count span {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .feedback-form,
+        .thank-you-message {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            height: 80%;
+            width: 80%
+        }
+        
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .feedback-form button {
+            background-color: #33b437;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .feedback-form button:hover {
+            background-color: #68c96c;
+        }
+        
+        .thank-you-message {
+            background-color: #d0d1fe;
+            padding: 2px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .thank-you-message p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .thank-you-message h4 {
+            color: var(--main-color);
+            margin-top: 5px;
+        }
+        
+        .feedback-list {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            display: none;
+        }
+        
+        .feedback-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ffcc00;
+            border-radius: 5px;
+        }
+        
+        .feedback-item h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .feedback-item p {
+            margin: 0;
+            color: #555;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+        /*footer*/
+        
+        footer {
+            background-color: rgba(61, 61, 61, 0.8);
+            color: #fff;
+            padding: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-media {
+            text-align: center;
+            flex-basis: 33%;
+            margin-bottom: 1rem;
+        }
+        
+        .social-media h5 {
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+        }
+        
+        .social-media-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 5px;
+        }
+        
+        .social-media img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .social-media a:hover img {
+            transform: scale(1.1);
+        }
+        
+        .tooltip {
+            font-size: 12px;
+            visibility: hidden;
+            width: auto;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 38px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            z-index: 1;
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out 3s forwards;
         }
         
+<<<<<<< HEAD
         @keyframes fadeIn {
             0% {
                 opacity: 0;
             }
             100% {
                 opacity: 1;
+=======
+        .social-media a:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .center-info {
+            text-align: center;
+            flex-basis: 33%;
+            margin-bottom: 1rem;
+        }
+        
+        .center-info a {
+            color: #40c4de;
+        }
+        
+        .qr-code {
+            text-align: center;
+            flex-basis: 33%;
+            margin-bottom: 1rem;
+        }
+        
+        .qr-code img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .qr-code a {
+            font-size: 10px;
+            color: #40c4de;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-media {
+                flex-basis: 100%;
+                text-align: center;
+            }
+            .social-media-icons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .center-info {
+                flex-basis: 100%;
+                text-align: center;
+            }
+            .qr-code {
+                flex-basis: 100%;
+                text-align: center;
+            }
+            .qr-code img {
+                width: 80px;
+                height: 80px;
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
             }
         }
     </style>
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="background"></div>
     <div class="container">
         <!-- Logo Image -->
@@ -158,8 +904,660 @@
             setTimeout(() => {
                 window.location.href = "gal.html"; // Replace with your gallery page URL
             }, 6000); // Redirect after 6 seconds
+=======
+    <header>
+        <h1>Explore the World of SJD art</h1>
+        <nav>
+            <ul>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#event">Highlights</a></li>
+                <li><a href="#comments">Praise</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- My Art Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <!-- Art Item 1 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/clock and circle.jpg" alt="Clock and Circle" class="art-img" data-name="Clock and Circle">
+                </div>
+                <div class="art-title-container">
+                    <h3>Clock and Circle</h3>
+                </div>
+            </div>
+            <!-- Art Item 2 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/creative.jpg" alt="Creative piece" class="art-img" data-name="Creative piece">
+                </div>
+                <div class="art-title-container">
+                    <h3>Creative piece</h3>
+                </div>
+            </div>
+            <!-- Art Item 3 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/1st comic style.jpg" alt="Comic style" class="art-img" data-name="Comic style">
+                </div>
+                <div class="art-title-container">
+                    <h3>Comic style</h3>
+                </div>
+            </div>
+            <!-- Art Item 4 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/ocean palace.jpg" alt="Ocean palace" class="art-img" data-name="Ocean palace">
+                </div>
+                <div class="art-title-container">
+                    <h3>Ocean palace</h3>
+                </div>
+            </div>
+            <!-- Art Item 5 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Spiderman 1.jpg" alt="Spiderman" class="art-img" data-name="Spiderman">
+                </div>
+                <div class="art-title-container">
+                    <h3>Spiderman</h3>
+                </div>
+            </div>
+            <!-- Art Item 6 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/waste planet.jpg" alt="Waste planet" class="art-img" data-name="Waste planet">
+                </div>
+                <div class="art-title-container">
+                    <h3>Waste planet</h3>
+                </div>
+            </div>
+            <!-- Art Item 7 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/358.jpg" alt="Dreamscapes" class="art-img" data-name="Dreamscapes">
+                </div>
+                <div class="art-title-container">
+                    <h3>Dreamscapes</h3>
+                </div>
+            </div>
+            <!-- Art Item 8 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Water reflection.jpg" alt="Water reflection" class="art-img" data-name="Water reflection">
+                </div>
+                <div class="art-title-container">
+                    <h3>Water reflection</h3>
+                </div>
+            </div>
+            <!-- Art Item 9 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/80.jpg" alt="Sea best" class="art-img" data-name="Sea best">
+                </div>
+                <div class="art-title-container">
+                    <h3>Sea best</h3>
+                </div>
+            </div>
+            <!-- Art Item 10 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Window view Eiffel Tower.jpg" alt="Window view" class="art-img" data-name="Window view">
+                </div>
+                <div class="art-title-container">
+                    <h3>Window view</h3>
+                </div>
+            </div>
+            <!-- Art Item 11 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/507.jpg" alt="Moon hat" class="art-img" data-name="Moon hat">
+                </div>
+                <div class="art-title-container">
+                    <h3>Moon hat</h3>
+                </div>
+            </div>
+            <!-- Art Item 12 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/547.jpg" alt="Zombie captain" class="art-img" data-name="Zombie captain">
+                </div>
+                <div class="art-title-container">
+                    <h3>Zombie captain</h3>
+                </div>
+            </div>
+            <!-- Art Item 13 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/726.jpg" alt="Arcane" class="art-img" data-name="Arcane">
+                </div>
+                <div class="art-title-container">
+                    <h3>Arcane</h3>
+                </div>
+            </div>
+            <!-- Art Item 14 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/35.jpg" alt="Hexagon" class="art-img" data-name="Hexagon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Hexagon</h3>
+                </div>
+            </div>
+            <!-- Art Item 15 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/36.jpg" alt="SJD Intro" class="art-img" data-name="SJD Intro">
+                </div>
+                <div class="art-title-container">
+                    <h3>SJD Intro</h3>
+                </div>
+            </div>
+            <!-- Art Item 16 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/803.jpg" alt="Dream yard" class="art-img" data-name="Dream yard">
+                </div>
+                <div class="art-title-container">
+                    <h3>Dream yard</h3>
+                </div>
+            </div>
+            <!-- Art Item 17 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/skull land.jpg" alt="Skull land" class="art-img" data-name="Skull land">
+                </div>
+                <div class="art-title-container">
+                    <h3>Skull land</h3>
+                </div>
+            </div>
+            <!-- Art Item 18 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/SH.jpg" alt="Seahorse warrior" class="art-img" data-name="Seahorse warrior">
+                </div>
+                <div class="art-title-container">
+                    <h3>Seahorse warrior</h3>
+                </div>
+            </div>
+            <!-- Art Item 19 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/book lake.jpg" alt="Book lake" class="art-img" data-name="Book lake">
+                </div>
+                <div class="art-title-container">
+                    <h3>Book lake</h3>
+                </div>
+            </div>
+            <!-- Art Item 20 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/sweet land.jpg" alt="Sweet land" class="art-img" data-name="Sweet land">
+                </div>
+                <div class="art-title-container">
+                    <h3>Sweet land</h3>
+                </div>
+            </div>
+            <!-- Art Item 21 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/tarzan.jpg" alt="Tarzan" class="art-img" data-name="Tarzan">
+                </div>
+                <div class="art-title-container">
+                    <h3>Tarzan</h3>
+                </div>
+            </div>
+            <!-- Art Item 22 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/2023 newyear.jpg" alt="2023 Newyear" class="art-img" data-name="2023 Newyear">
+                </div>
+                <div class="art-title-container">
+                    <h3>2023 Newyear</h3>
+                </div>
+            </div>
+            <!-- Art Item 23 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/920.jpg" alt="Robo mosquito" class="art-img" data-name="Robo mosquito">
+                </div>
+                <div class="art-title-container">
+                    <h3>Robo mosquito</h3>
+                </div>
+            </div>
+            <!-- Art Item 24 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/908.jpg" alt="Mahito" class="art-img" data-name="Mahito">
+                </div>
+                <div class="art-title-container">
+                    <h3>Mahito</h3>
+                </div>
+            </div>
+            <!-- Art Item 25 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/852.jpg" alt="Cartoon avenger" class="art-img" data-name="Cartoon avenger">
+                </div>
+                <div class="art-title-container">
+                    <h3>Cartoon avenger</h3>
+                </div>
+            </div>
+            <!-- Art Item 26 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/egg.jpg" alt="Broken egg" class="art-img" data-name="Broken egg">
+                </div>
+                <div class="art-title-container">
+                    <h3>Broken egg</h3>
+                </div>
+            </div>
+            <!-- Art Item 27 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/kombu mela pattaapuchi.jpg" alt="Unlovely & Cute" class="art-img" data-name="Unlovely & Cute">
+                </div>
+                <div class="art-title-container">
+                    <h3>Unlovely & Cute</h3>
+                </div>
+            </div>
+            <!-- Art Item 28 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/802.jpg" alt="Jelly animal" class="art-img" data-name="Jelly animal">
+                </div>
+                <div class="art-title-container">
+                    <h3>Jelly animal</h3>
+                </div>
+            </div>
+            <!-- Art Item 29 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/kaaba.jpg" alt="Kaaba" class="art-img" data-name="Kaaba">
+                </div>
+                <div class="art-title-container">
+                    <h3>kaaba</h3>
+                </div>
+            </div>
+            <!-- Art Item 30 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Moon.jpg" alt="Creative moon" class="art-img" data-name="Creative moon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Creative moon</h3>
+                </div>
+            </div>
+            <!-- Art Item 31 -->
+            <div class="art-item">
+                <div class="art-img-container">
+                    <img src="gall/Cartoon.jpg" alt="Cartoon" class="art-img" data-name="Cartoon">
+                </div>
+                <div class="art-title-container">
+                    <h3>Cartoon</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+
+    <section id="about">
+        <div class="about-header">
+            <img src="eve/1668599489213.jpg" alt="Profile Picture" class="profile-picture">
+            <h2>About me</h2>
+        </div>
+        <p>Hi, I'm Sajid Ali from India and Here is my short summary of love towards my passion, I started my art Journey in my schooling. During my college days, I was more connected physically and mentally with my passion.Then, I started to explore and
+            work hard on the artwork. I was specialize in hand drawing and focused on uniqueness with creativity... Passion on art leads me to focus on different perspective in each and every content. My artwork shows a unique, finest, simple and creative
+            ... I'm so grateful to my passion and I'm committed to continuing my artistic journey, pushing the boundaries of my creativity and sharing my unique world creation with my people who is near and far.<br>"Art enables us to find ourselves and
+            lose ourselves at the same time -
+            <strong>Thomas Merton</strong>"<br> His words hit me everytime that's true, which reflects my love towards art</p>
+        <div class="social-media ">
+            <p><strong>Connect me on:</strong><a href="https://www.linkedin.com/in/sajid-ali-185532224/" target="_blank">🔗Linkedin</a></p>
+        </div>
+    </section>
+
+    <!-- Art Event Section -->
+    <section id="event">
+        <h2>Art Journey Highlights</h2>
+        <div class="contest-container">
+            <div class="contest-item">
+                <img src="eve/1.jpg" alt="Orion" class="contest-img" data-name="Orion">
+                <h3>Orion</h3>
+                <p>I participated in my college's main annual event, "Orion " and It was honor where i secured 3rd place for my artwork on the theme "Hope of Rays ".</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/2.jpg" alt="Munthly task" class="contest-img" data-name="Munthly task">
+                <h3>Munthly task</h3>
+                <p>I won the 1st prize in the Crescent Art Club's monthly task on the theme of "New Year and Christmas ".</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/3.jpg" alt="Club task" class="contest-img" data-name="Club task">
+                <h3>Club task</h3>
+                <p>The Crescent Art Club hosted a monthly competition with the theme "Pongal. " In that I participated and won 3rd prize. In this day, I celebrated the traditional festival along with my achievement.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/w1.jpg" alt="Workshop" class="contest-img" data-name="Workshop">
+                <h3>Workshop</h3>
+                <p>Crescent Creative Strokes organized a ballpoint pen workshop, it taught unique techniques. After completing the session, participants were awarded by the certificates to appreciate their artistic growth and participation.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/w2.jpg" alt="Crescent creative strokes" class="contest-img" data-name="Crescent creative strokes">
+                <h3>Crescent creative strokes</h3>
+                <p>Crescent Creative Strokes hosted an engaging ballpoint pen workshop, where the participants practiced intricate techniques. At the end, we all gathered together for a memorable group photo.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/w3.jpg" alt="Crescent art club" class="contest-img" data-name="Crescent art club">
+                <h3>Crescent art club</h3>
+                <p>The Crescent Art Club conducted a portrait workshop where the participants can explore techniques. Atlast, everyone gathered for a group picture to create memories.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/cac meet.jpg" alt="Club meeting" class="contest-img" data-name="Club meeting">
+                <h3>Club meeting</h3>
+                <p>The Crescent Art Club(CAC) hosted a meeting, where the members were discussed a creative ideas. In the end of meeting, everyone gathered for a group picture to commemorate the event.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/Screenshot 2024-09-24 203555.png" alt="agazine" class="contest-img " data-name="agazine">
+                <h3>Magazine</h3>
+                <p>Crescent university published a magazine which was known as Meraki. It features art, poetry, achievements, photography and so on. In Meraki 23 Winter Edition, my artwork was selected for the publication.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/Screenshot 2024-09-24 203956.png " alt="Display on a website" class="contest-img " data-name="Display on a website">
+                <h3>Display on a website</h3>
+                <p>Crescent Creative Strokes hosted a monthly task with the theme "Underwater ". I secured 1st place and they displayed my artwork on their website which was one of the proudest moment in my life.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/Screenshot 2024-09-26 220433.png" alt="Magazine" class="contest-img" data-name="Magazine">
+                <h3>Magazine</h3>
+                <p>he College published the CRESCENT-LINE June edition, In that highlighting various events by selecting the best work from the events. In that publication, my art was published as best work.</p>
+            </div>
+            <div class="contest-item">
+                <img src="eve/cac.jpg" alt="Club meeting" class="contest-img" data-name="Club meeting">
+                <h3>Club meeting</h3>
+                <p>The Crescent Art Club operating under ISTD-C hosted a meeting, where the members were discussed a creative ideas. In the end of meeting, everyone gathered for a group picture to commemorate the event.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Viewing Images -->
+    <div id="modal">
+        <div id="modal-content">
+            <button id="close">&times;</button>
+            <button id="prev">&lt;</button>
+            <button id="next">&gt;</button>
+            <img src="" id="modal-img" alt="Artwork Image" width="500px" height="600px" style="display: block; margin: auto;">
+            <div id="art-name" style="color: white; text-align: center; margin-top: 10px;"></div>
+        </div>
+    </div>
+    <h2 id="comments" class=" comments-title">Voices of praise</h2>
+    <div class="comments-container">
+        <div class="comment">
+            <div class="comment-header">
+                <img src="eve/27a.jpg" alt="sakinah" class="profile-pic">
+                <div>
+                    <h3 class="name">Shameem Sakinah</h3>
+                    <h1 class="person-link">CAC managing head</h1>
+                </div>
+            </div>
+            <p class="comment-text ">Your artworks are colourful and lively. Each one of your artworks are unique and different. Love your works. Keep creating more art like this👍</p>
+        </div>
+        <div class="comment ">
+            <div class="comment-header">
+                <img src="eve/WhatsApp Image 2024-09-27 at 14.35.54_88a15001.jpg" alt="gopi img" class="profile-pic">
+                <div>
+                    <h3 class="name">Gopi</h3>
+                    <h1 class="person-link">CAC creative head</h1>
+                </div>
+            </div>
+            <p class="comment-text">Your artwork beautifully captures the essence of the subject with vibrant colors and meticulous detail. The shading and texture bring everything to life. Stunning work!.</p>
+        </div>
+        <div class="comment">
+            <div class="comment-header">
+                <img src="eve/WhatsApp Image 2024-09-28 at 22.35.48_16bbb8e8.jpg" alt="Yuva Bharathi" class="profile-pic">
+                <div>
+                    <h3 class="name">Yuva Bharathi</h3>
+                    <h1 class="person-link ">CAC member</h1>
+                </div>
+            </div>
+            <p class="comment-text ">Your vibrant colors and skillful textures create a truly captivating and emotionally powerful piece. Amazing and very creative works! Keep sharing your art with the world.</p>
+        </div>
+    </div>
+    <div class="feedback-container">
+        <!-- Like/Dislike Section -->
+        <div class="like-dislike-section">
+            <h3>Do you like SJD art Gallery?</h3>
+            <div class="like-dislike-buttons">
+                <button id="likeButton">👍 Like</button>
+                <button id="dislikeButton">👎 Dislike</button>
+            </div>
+            <!-- Like/Dislike Counts -->
+            <div class="like-dislike-count" id="likeDislikeCount">
+                <span id="likeCount">0</span> Likes
+                <span id="dislikeCount">0</span> Dislikes
+            </div>
+        </div>
+
+        <!-- Feedback Form -->
+        <div class="feedback-form" id="feedbackForm">
+            <h3>Leave Feedback</h3>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <textarea id="feedbackText" name="feedback" rows="3" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </div>
+    </div>
+
+    <!-- Feedback List Display -->
+    <div class="feedback-list" id="feedbackList">
+        <h3>Feedback from Users:</h3>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-media">
+                <h5>Follow me on:</h5>
+                <!-- Heading above social media icons -->
+                <a href="https://www.instagram.com/sjd_art.2/" target="_blank">
+                    <img src="app/icons8-instagram-24.png" alt="Instagram" width="40px" height="40px">
+                    <span class="tooltip">Instagram</span>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Va5605k7T8bbReSGLh3N" target="_blank">
+                    <img src="app/icons8-whatsapp-24.png" alt="WhatsApp" width="40px" height="40px">
+                    <span class="tooltip">WhatsApp</span>
+                </a>
+                <a href="https://x.com/Sjd2701af" target="_blank">
+                    <img src="app/icons8-twitterx-24.png" alt="TwitterX" width="40px" height="40px">
+                    <span class="tooltip">TwitterX</span>
+                </a>
+                <a href="https://in.pinterest.com/sajidaliaf2701/" target="_blank">
+                    <img src="app/icons8-pinterest-24.png" alt="Pinterest" width="40px" height="40px">
+                    <span class="tooltip">Pinterest</span>
+                </a>
+                <a href="https://www.behance.net/sajidali188" target="_blank">
+                    <img src="app/icons8-behance-24.png" alt="Behance" width="40px" height="40px">
+                    <span class="tooltip">Behance</span>
+                </a>
+            </div>
+            <div class="center-info">
+                <p>&copy; 2024 SJD Art Gallery. All rights reserved.</p>
+                <p>Email: <a href="mailto:sajidaliaf2701@gmail.com">sajidaliaf2701@gmail.com</a></p>
+            </div>
+
+            <div class="qr-code">
+                <p>Scan to visit:</p>
+                <img src="app/qr link.png" alt="QR Code"><br>
+                <a href="https://qrlink.netlify.app/" target="_blank">QR link</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            document.querySelectorAll('section').forEach(function(section) {
+                let sectionTop = section.getBoundingClientRect().top;
+                let windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+        // Function to open the images
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.getElementById('close');
+        const nextBtn = document.getElementById('next');
+        const prevBtn = document.getElementById('prev');
+        const artImages = document.querySelectorAll('.art-img');
+        const contestImages = document.querySelectorAll('.contest-img');
+        const allImages = [...artImages, ...contestImages];
+        let currentIndex = 0;
+        let currentCategory = " "; 
+
+        function openModal(index, category) {
+            modal.style.display = 'block';
+            let selectedImage;
+
+            if (category === 'art') {
+                selectedImage = artImages[index];
+                modalImg.src = selectedImage.src;
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); 
+                currentCategory = 'art';
+                currentIndex = index;
+            } else if (category === 'contest') {
+                selectedImage = contestImages[index - artImages.length]; 
+                modalImg.src = selectedImage.src;
+                document.getElementById('art-name').textContent = selectedImage.getAttribute('data-name'); 
+                currentCategory = 'contest';
+                currentIndex = index - artImages.length;
+            }
+
+            modalImg.style.animation = "fadeIn 0.5s"; 
+        }
+
+        artImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openModal(index, 'art');
+            });
+        });
+
+        contestImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openModal(index + artImages.length, 'contest'); 
+            });
+        });
+
+        // Close modal button event
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Next button event
+        nextBtn.addEventListener('click', () => {
+            if (currentCategory === 'art') {
+                currentIndex = (currentIndex + 1) % artImages.length;
+                modalImg.src = artImages[currentIndex].src;
+                document.getElementById('art-name').textContent = artImages[currentIndex].getAttribute('data-name');
+            } else if (currentCategory === 'contest') {
+                currentIndex = (currentIndex + 1) % contestImages.length;
+                modalImg.src = contestImages[currentIndex].src;
+                document.getElementById('art-name').textContent = contestImages[currentIndex].getAttribute('data-name');
+            }
+        });
+
+        // Previous button event
+        prevBtn.addEventListener('click', () => {
+            if (currentCategory === 'art') {
+                currentIndex = (currentIndex - 1 + artImages.length) % artImages.length;
+                modalImg.src = artImages[currentIndex].src;
+                document.getElementById('art-name').textContent = artImages[currentIndex].getAttribute('data-name');
+            } else if (currentCategory === 'contest') {
+                currentIndex = (currentIndex - 1 + contestImages.length) % contestImages.length;
+                modalImg.src = contestImages[currentIndex].src;
+                document.getElementById('art-name').textContent = contestImages[currentIndex].getAttribute('data-name');
+            }
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+        // Like and Dislike Counters
+        let likeCount = 0;
+        let dislikeCount = 0;
+
+        const likeButton = document.getElementById('likeButton');
+        const dislikeButton = document.getElementById('dislikeButton');
+        const likeDislikeCount = document.getElementById('likeDislikeCount');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackList = document.getElementById('feedbackList');
+        const submitButton = feedbackForm.querySelector('button[type="submit"]');
+
+        function disableBothButtons() {
+            likeButton.disabled = true;
+            dislikeButton.disabled = true;
+            likeButton.style.backgroundColor = '#ccc';
+            dislikeButton.style.backgroundColor = '#ccc';
+        }
+
+        // Event listener for Like button
+        likeButton.addEventListener('click', function() {
+            likeCount++;
+            document.getElementById('likeCount').textContent = likeCount;
+            likeDislikeCount.style.display = 'flex';
+            disableBothButtons();
+        });
+
+        // Event listener for Dislike button
+        dislikeButton.addEventListener('click', function() {
+            dislikeCount++;
+            document.getElementById('dislikeCount').textContent = dislikeCount;
+            likeDislikeCount.style.display = 'flex';
+            disableBothButtons();
+        });
+
+        // Feedback Form Handling
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            const userName = document.getElementById('name').value;
+            const userFeedback = document.getElementById('feedbackText').value;
+
+            if (!userName || !userFeedback) {
+                alert('Please fill in both your name and feedback.');
+                return;
+            }
+
+            const feedbackItem = document.createElement('div');
+            feedbackItem.classList.add('feedback-item');
+            feedbackItem.innerHTML = `
+                <h4>${userName}</h4>
+                <p>${userFeedback}</p>
+            `;
+
+            if (feedbackList.style.display === 'none') {
+                feedbackList.style.display = 'block';
+            }
+
+            feedbackList.appendChild(feedbackItem);
+
+            document.getElementById('name').value = '';
+            document.getElementById('feedbackText').value = '';
+
+            feedbackForm.style.display = 'none';
+
+            const thankYouMessage = document.createElement('div');
+            thankYouMessage.classList.add('thank-you-message');
+            thankYouMessage.innerHTML = `
+                <p>Thank you for your feedback, <strong>${userName}</strong>!</p>
+                <h4>Your feedback:</h4>
+                <p>"${userFeedback}"</p>
+            `;
+
+            feedbackForm.parentNode.insertBefore(thankYouMessage, feedbackForm);
+>>>>>>> 4f8b8a52f16ce74a24cbebd9e7f3f4e35e00c0bf
         });
     </script>
 </body>
-
 </html>
