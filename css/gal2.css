@@ -1,0 +1,113 @@
+ #gallery {
+     padding: 0rem;
+     background-color: rgba(255, 255, 255, 0.9);
+     border-radius: 10px;
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+     font-size: 1.2rem;
+ }
+ 
+ .hero {
+     width: 100%;
+     height: 100vh;
+     background: #e0e1fd;
+     overflow: hidden;
+     border-radius: 10px;
+     position: relative;
+     /* Important for positioning child elements */
+ }
+ 
+ .hero h2 {
+     position: absolute;
+     top: 20px;
+     left: 51%;
+     transform: translate(-50%, -50%);
+     font-size: 2rem;
+     color: #000000;
+     font-family: 'Arial', sans-serif;
+     z-index: 1;
+ }
+ 
+ .hero .carousel {
+     width: 200px;
+     margin: 100px auto 0;
+     overflow: visible;
+     left: 10px;
+ }
+ 
+ .carousel img {
+     -webkit-box-reflect: below 20px linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+     border: 5px solid;
+     border-radius: 1.5rem;
+     width: 250px;
+     height: 360px;
+     border-color: var(--main-color);
+     border-style: solid;
+ }
+ 
+ .carousel p {
+     font-family: 'Arial', sans-serif;
+     color: var(--main-color);
+     font-size: 1.5rem;
+ }
+ 
+ .view-more-container {
+     text-align: center;
+     margin-top: 80px;
+     background-color: #0000007d;
+ }
+ 
+ .view-more-btn {
+     position: absolute;
+     bottom: 20px;
+     right: 20px;
+     display: inline-block;
+     padding: 10px 20px;
+     color: #ffffff;
+     background-color: #868686bc;
+     text-decoration: none;
+     border-radius: 30px;
+     font-size: 12px;
+     border: 2px solid transparent;
+     transition: border 0.3s ease, background-color 0.3s ease;
+     z-index: 10;
+ }
+ 
+ .view-more-btn:hover {
+     background-color: rgba(0, 0, 0, 0);
+     border-color: var(--main-color);
+     border-style: double;
+     color: var(--main-color);
+ }
+ 
+ @media (max-width: 480px) {
+     .view-more-btn {
+         bottom: 15px;
+         right: 38%;
+         font-size: 10px;
+         padding: 6px 12px;
+     }
+ }
+ 
+ @media (max-width: 480px) {
+     .hero {
+         width: 100%;
+         height: 60vh;
+     }
+     .carousel img {
+         border: 2px solid;
+         border-radius: 1rem;
+         width: 180px;
+         height: 240px;
+         border-color: var(--main-color);
+         border-style: solid;
+     }
+     .carousel p {
+         font-size: 1rem;
+     }
+     .hero h2 {
+         font-size: 1.5rem;
+     }
+     .hero .carousel {
+         left: 5px;
+     }
+ }
