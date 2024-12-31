@@ -53,29 +53,15 @@
         .logo-image {
             width: 200px;
             height: auto;
-            opacity: 0;
-            transform: scale(1.2);
-            animation: slideIn 2s ease-in-out forwards, zoomEffect 8s infinite;
+            animation: rotateOnce 3s ease-in-out forwards;
         }
         
-        @keyframes slideIn {
+        @keyframes rotateOnce {
             0% {
-                opacity: 0;
-                transform: translateY(-50px) scale(1.2);
+                transform: rotateY(0deg) scale(1);
             }
             100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        @keyframes zoomEffect {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
+                transform: rotateY(360deg) scale(1);
             }
         }
         /* Gallery Name Animation */
@@ -90,13 +76,9 @@
             /* Gradient Effect */
             background: linear-gradient(to right, rgb(33, 133, 255), rgb(8, 126, 12), rgb(246, 87, 87));
             -webkit-background-clip: text;
-            /* Ensures gradient applies to text */
             -webkit-text-fill-color: transparent;
-            /* Makes the text itself transparent */
             background-clip: text;
-            /* For non-webkit browsers */
             text-fill-color: transparent;
-            /* For future compatibility */
         }
         /* Marvel-Like Divider */
         
