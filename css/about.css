@@ -1,60 +1,100 @@
- /* About Me Section */
- 
- #about {
-     background-color: #f9f3fd;
-     transform: translateY(50px);
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     /* Center-align content horizontally */
-     text-align: center;
-     padding-bottom: 20px;
-     margin-bottom: 80px;
-     transition: opacity var(--transition-speed), transform var(--transition-speed);
- }
- 
- .about-header {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-bottom: 20px;
- }
- 
- .profile-picture {
-     width: 80px;
-     /* Small size profile picture */
-     height: 80px;
-     border-radius: 50%;
-     /* Circular profile picture */
-     margin-right: 15px;
-     /* Space between picture and heading */
- }
- 
- #about p {
-     font-size: 1.2rem;
-     line-height: 1.8;
-     color: #4d4c4c;
-     margin-bottom: 20px;
-     max-width: 1200px;
- }
- 
- .social-media {
-     margin: 1rem 0;
- }
- 
- .social-media a {
-     margin: 0 1rem;
-     text-decoration: none;
-     color: #686868;
-     font-size: 1.2rem;
- }
- 
- .social-media a:hover {
-     color: var(--main-color);
- }
- 
- @media(max-width: 480px) {
-     #about p {
-         font-size: 1rem;
-     }
- }
+/* About Me Section */
+
+#about {
+    background-color: #f9f3fd;
+    transform: translateY(50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 80px;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4d4c4c;
+    margin-bottom: 20px;
+    max-width: 1200px;
+}
+
+.social-media {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social-media p {
+    margin: 10px 0;
+}
+
+.social-media a {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-media img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.1);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.social-media a:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+    #about p {
+        font-size: 1rem;
+    }
+    .profile-picture {
+        width: 60px;
+        height: 60px;
+    }
+    .social-media img {
+        width: 40px;
+        height: 40px;
+    }
+}
