@@ -17,9 +17,8 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Arial', sans-serif;
-            background: black;
         }
-        /* Background Animation */
+        /* Smooth Sky Background Animation */
         
         .background {
             position: absolute;
@@ -27,16 +26,81 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #a5bdff, #fde4e4);
-            animation: backgroundMove 8s infinite alternate;
+            background: linear-gradient(135deg, #0e0a24, #332688, #8caafb, #fde4e4);
+            background-size: 300% 300%;
+            animation: backgroundMove 6s infinite alternate ease-in-out;
+            z-index: -2;
         }
         
         @keyframes backgroundMove {
             0% {
-                background-position: 0% 0%;
+                background-position: 0% 50%;
             }
             100% {
-                background-position: 100% 100%;
+                background-position: 100% 50%;
+            }
+        }
+        /* Stars */
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkling 2s infinite alternate, colorChange 5s infinite alternate, brightnessChange 2s infinite alternate;
+        }
+        /* Twinkling Effect */
+        
+        @keyframes twinkling {
+            0% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+        /* Color Change for Stars */
+        
+        @keyframes colorChange {
+            0% {
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+            25% {
+                background-color: rgba(255, 0, 0, 0.8);
+            }
+            50% {
+                background-color: rgba(0, 255, 255, 0.8);
+            }
+            75% {
+                background-color: rgba(0, 255, 0, 0.8);
+            }
+            100% {
+                background-color: rgba(255, 255, 0, 0.8);
+            }
+        }
+        /* Brightness Change for Stars */
+        
+        @keyframes brightnessChange {
+            0% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.3;
             }
         }
         /* Main Content */
@@ -48,20 +112,41 @@
             height: 100%;
             flex-direction: column;
         }
-        /* Logo Image Animation */
+        /* Logo Container */
         
-        .logo-image {
+        .logo-container {
+            position: relative;
             width: 200px;
+            height: 200px;
+        }
+        /* Static Logo Image */
+        
+        .logo-image-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: auto;
-            animation: rotateOnce 3s ease-in-out forwards;
+            z-index: 1;
+        }
+        /* Rotating Logo Image */
+        
+        .logo-image-front {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 2;
+            animation: circularRotate 3s ease-in-out forwards;
         }
         
-        @keyframes rotateOnce {
+        @keyframes circularRotate {
             0% {
-                transform: rotateY(0deg) scale(1);
+                transform: rotate(0deg);
             }
             100% {
-                transform: rotateY(360deg) scale(1);
+                transform: rotate(360deg);
             }
         }
         /* Gallery Name Animation */
@@ -73,14 +158,13 @@
             margin-top: 10px;
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out 0.8s forwards;
-            /* Gradient Effect */
-            background: linear-gradient(to right, rgb(33, 133, 255), rgb(8, 126, 12), rgb(246, 87, 87));
+            background: linear-gradient(to right, rgb(255, 29, 29), rgb(0, 32, 212));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
         }
-        /* Marvel-Like Divider */
+        /* Divider */
         
         .divider {
             width: 0;
@@ -123,23 +207,36 @@
 
 <body>
     <div class="background"></div>
+    <div class="stars" id="stars"></div>
     <div class="container">
-        <!-- Logo Image -->
-        <img src="app/ss3.png" alt="SJD Art Gallery Logo" class="logo-image">
-        <!-- Gallery Name -->
+        <div class="logo-container">
+            <img src="app/front.png" alt="SJD Art Gallery Logo Front" class="logo-image-front">
+            <img src="app/back.png" alt="SJD Art Gallery Logo Back" class="logo-image-back">
+        </div>
         <h1 class="gallery-name">SJD Art Gallery</h1>
-        <!-- Divider -->
         <div class="divider"></div>
-        <!-- Tagline -->
         <p class="tagline">"Art That Speaks Without Words"</p>
     </div>
 
     <script>
+        // JavaScript for stars
+        const stars = document.getElementById("stars");
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            stars.appendChild(star);
+        }
+
         // JavaScript for redirecting to the gallery
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
-                window.location.href = "gal.html"; // Replace with your gallery page URL
-            }, 6000); // Redirect after 6 seconds
+                window.location.href = "gal.html";
+            }, 6000);
         });
     </script>
 </body>
