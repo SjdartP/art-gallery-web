@@ -136,76 +136,123 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
-// Like and Dislike Counters
-let likeCount = 0;
-let dislikeCount = 0;
 
-const likeButton = document.getElementById('likeButton');
-const dislikeButton = document.getElementById('dislikeButton');
-const likeDislikeCount = document.getElementById('likeDislikeCount');
-const feedbackForm = document.getElementById('feedbackForm');
-const feedbackList = document.getElementById('feedbackList');
-const submitButton = feedbackForm.querySelector('button[type="submit"]');
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollContainer = document.querySelector(".reels-container");
+    const videos = document.querySelectorAll(".autoplay-reel");
 
-function disableBothButtons() {
-    likeButton.disabled = true;
-    dislikeButton.disabled = true;
-    likeButton.style.backgroundColor = '#ccc';
-    dislikeButton.style.backgroundColor = '#ccc';
-}
-
-// Event listener for Like button
-likeButton.addEventListener('click', function() {
-    likeCount++;
-    document.getElementById('likeCount').textContent = likeCount;
-    likeDislikeCount.style.display = 'flex';
-    disableBothButtons();
-});
-
-// Event listener for Dislike button
-dislikeButton.addEventListener('click', function() {
-    dislikeCount++;
-    document.getElementById('dislikeCount').textContent = dislikeCount;
-    likeDislikeCount.style.display = 'flex';
-    disableBothButtons();
-});
-
-// Feedback Form Handling
-submitButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    const userName = document.getElementById('name').value;
-    const userFeedback = document.getElementById('feedbackText').value;
-
-    if (!userName || !userFeedback) {
-        alert('Please fill in both your name and feedback.');
-        return;
+    // Function to detect mobile screens
+    function isMobile() {
+        return window.innerWidth <= 768;
     }
 
-    const feedbackItem = document.createElement('div');
-    feedbackItem.classList.add('feedback-item');
-    feedbackItem.innerHTML = `
-        <h4>${userName}</h4>
-        <p>${userFeedback}</p>
-    `;
+    if (isMobile()) {
+        // Function to check if a video is fully visible
+        function checkVisibleVideos() {
+            videos.forEach(video => {
+                const rect = video.getBoundingClientRect();
+                const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
 
-    if (feedbackList.style.display === 'none') {
-        feedbackList.style.display = 'block';
+                if (fullyVisible) {
+                    if (video.paused) {
+                        video.muted = false; // Enable audio
+                        video.play();
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+        }
+
+        // Ensure user interaction before playing videos (fixes autoplay restriction)
+        function enableVideoInteraction() {
+            videos.forEach(video => {
+                video.muted = false; // Unmute
+            });
+            document.removeEventListener("click", enableVideoInteraction);
+        }
+        document.addEventListener("click", enableVideoInteraction);
+
+        // Listen for scroll and resize events
+        scrollContainer.addEventListener("scroll", checkVisibleVideos);
+        window.addEventListener("resize", checkVisibleVideos);
+        checkVisibleVideos(); // Initial check on load
+
+    } else {
+        // Desktop: Enable horizontal scrolling using the mouse wheel
+        scrollContainer.addEventListener("wheel", (event) => {
+            event.preventDefault();
+            scrollContainer.scrollBy({
+                left: event.deltaY * 2, // Horizontal scrolling
+                behavior: "smooth"
+            });
+        });
+
+        // Desktop: Enable smooth click & drag scrolling
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener("mousedown", (event) => {
+            isDown = true;
+            startX = event.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener("mouseleave", () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener("mouseup", () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener("mousemove", (event) => {
+            if (!isDown) return;
+            event.preventDefault();
+            const x = event.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Adjust for sensitivity
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        // Desktop: Auto-play videos on hover with sound
+        videos.forEach(video => {
+            video.addEventListener("mouseenter", () => {
+                video.muted = false;
+                video.play();
+            });
+
+            video.addEventListener("mouseleave", () => {
+                video.pause();
+                video.muted = true;
+            });
+
+            // Open video in fullscreen on click
+            video.addEventListener("click", () => {
+                openFullscreen(video);
+            });
+        });
+
+        // Function to open video in fullscreen mode
+        function openFullscreen(video) {
+            const fullscreenDiv = document.createElement("div");
+            fullscreenDiv.classList.add("fullscreen-video");
+
+            const fullscreenVideo = video.cloneNode(true);
+            fullscreenVideo.controls = true;
+            fullscreenVideo.muted = false;
+            fullscreenVideo.autoplay = true;
+            fullscreenDiv.appendChild(fullscreenVideo);
+
+            const closeButton = document.createElement("div");
+            closeButton.classList.add("close-fullscreen");
+            closeButton.innerHTML = "&#10005;";
+            closeButton.addEventListener("click", () => {
+                fullscreenDiv.remove();
+            });
+
+            fullscreenDiv.appendChild(closeButton);
+            document.body.appendChild(fullscreenDiv);
+        }
     }
-
-    feedbackList.appendChild(feedbackItem);
-
-    document.getElementById('name').value = '';
-    document.getElementById('feedbackText').value = '';
-
-    feedbackForm.style.display = 'none';
-
-    const thankYouMessage = document.createElement('div');
-    thankYouMessage.classList.add('thank-you-message');
-    thankYouMessage.innerHTML = `
-        <p>Thank you for your feedback, <strong>${userName}</strong>!</p>
-        <h4>Your feedback:</h4>
-        <p>"${userFeedback}"</p>
-    `;
-
-    feedbackForm.parentNode.insertBefore(thankYouMessage, feedbackForm);
 });

@@ -7,14 +7,14 @@
     <title>SJDart home</title>
     <link rel="icon" href="app/9.png">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/new art.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/event.css">
-    <link rel="stylesheet" href="css/feed.css">
-    <link rel="stylesheet" href="css/message.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/gal2.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/gal2.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/new art.css">
+    <link rel="stylesheet" href="css/event.css">
+    <link rel="stylesheet" href="css/voices.css">
+    <link rel="stylesheet" href="css/reels.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
@@ -22,10 +22,10 @@
         <h1>Explore the World of SJD art</h1>
         <nav>
             <ul>
-                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#event">Highlights</a></li>
                 <li><a href="#comments">Praise</a></li>
+                <li><a href="#reels">Reels</a></li>
             </ul>
         </nav>
     </header>
@@ -102,7 +102,6 @@
                 </a>
             </p>
         </div>
-
 
     </section>
 
@@ -214,7 +213,7 @@
     <div class="comments-container">
         <div class="comment">
             <div class="comment-header">
-                <img src="eve/27a.jpg" alt="sakinah" class="profile-pic">
+                <img src="eve/sa.jpg" alt="sakinah" class="profile-pic">
                 <div>
                     <h3 class="name">Shameem Sakinah</h3>
                     <h1 class="person-link">CAC managing head</h1>
@@ -224,7 +223,7 @@
         </div>
         <div class="comment ">
             <div class="comment-header">
-                <img src="eve/WhatsApp Image 2024-09-27 at 14.35.54_88a15001.jpg" alt="gopi img" class="profile-pic">
+                <img src="eve/go.jpg" alt="gopi img" class="profile-pic">
                 <div>
                     <h3 class="name">Gopi</h3>
                     <h1 class="person-link">CAC creative head</h1>
@@ -234,7 +233,7 @@
         </div>
         <div class="comment">
             <div class="comment-header">
-                <img src="eve/WhatsApp Image 2024-09-28 at 22.35.48_16bbb8e8.jpg" alt="Yuva Bharathi" class="profile-pic">
+                <img src="eve/ub.jpg" alt="Yuva Bharathi" class="profile-pic">
                 <div>
                     <h3 class="name">Yuva Bharathi</h3>
                     <h1 class="person-link ">CAC member</h1>
@@ -243,73 +242,76 @@
             <p class="comment-text ">Your vibrant colors and skillful textures create a truly captivating and emotionally powerful piece. Amazing and very creative works! Keep sharing your art with the world.</p>
         </div>
     </div>
-    <div class="feedback-container">
-        <!-- Like/Dislike Section -->
-        <div class="like-dislike-section">
-            <h3>Do you like SJD art Gallery?</h3>
-            <div class="like-dislike-buttons">
-                <button id="likeButton">👍 Like</button>
-                <button id="dislikeButton">👎 Dislike</button>
-            </div>
-            <!-- Like/Dislike Counts -->
-            <div class="like-dislike-count" id="likeDislikeCount">
-                <span id="likeCount">0</span> Likes
-                <span id="dislikeCount">0</span> Dislikes
+    <!-- Reels Section -->
+    <section id="reels">
+        <h2 class="reels-title">Reels</h2>
+        <div class="reels-wrapper">
+            <div class="reels-container">
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel1.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel2.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel3.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel4.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel5.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel6.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel7.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel8.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel9.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel10.mp4" type="video/mp4"></video></div>
+                <div class="reel"><video class="autoplay-reel" muted loop playsinline><source src="reels/reel11.mp4" type="video/mp4"></video></div>
             </div>
         </div>
-
-        <!-- Feedback Form -->
-        <div class="feedback-form" id="feedbackForm">
-            <h3>Leave Feedback</h3>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <textarea id="feedbackText" name="feedback" rows="3" placeholder="Your Feedback" required></textarea>
-            <button type="submit">Submit Feedback</button>
-        </div>
-    </div>
-
-    <!-- Feedback List Display -->
-    <div class="feedback-list" id="feedbackList">
-        <h3>Feedback from Users:</h3>
-    </div>
+    </section>
 
     <footer>
         <div class="footer-content">
             <div class="social-media">
                 <h5>Follow me on:</h5>
-                <!-- Heading above social media icons -->
-                <a href="https://www.instagram.com/sjd_art.2/" target="_blank">
-                    <img src="app/icons8-instagram-24.png" alt="Instagram" width="40px" height="40px">
-                    <span class="tooltip">Instagram</span>
-                </a>
-                <a href="https://whatsapp.com/channel/0029Va5605k7T8bbReSGLh3N" target="_blank">
-                    <img src="app/icons8-whatsapp-24.png" alt="WhatsApp" width="40px" height="40px">
-                    <span class="tooltip">WhatsApp</span>
-                </a>
-                <a href="https://x.com/Sjd2701af" target="_blank">
-                    <img src="app/icons8-twitterx-24.png" alt="TwitterX" width="40px" height="40px">
-                    <span class="tooltip">TwitterX</span>
-                </a>
-                <a href="https://in.pinterest.com/sajidaliaf2701/" target="_blank">
-                    <img src="app/icons8-pinterest-24.png" alt="Pinterest" width="40px" height="40px">
-                    <span class="tooltip">Pinterest</span>
-                </a>
-                <a href="https://www.behance.net/sajidali188" target="_blank">
-                    <img src="app/icons8-behance-24.png" alt="Behance" width="40px" height="40px">
-                    <span class="tooltip">Behance</span>
-                </a>
-            </div>
-            <div class="center-info">
-                <p>&copy; 2024 SJD Art Gallery. All rights reserved.</p>
-                <p>Email: <a href="mailto:sajidaliaf2701@gmail.com">sajidaliaf2701@gmail.com</a></p>
+                <div class="social-media-icons">
+                    <a href="https://www.instagram.com/sjd_art.2/" target="_blank">
+                        <img src="app/icons8-instagram-logo-48.png" alt="Instagram">
+                        <span class="tooltip">Instagram</span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Va5605k7T8bbReSGLh3N" target="_blank">
+                        <img src="app/icons8-whatsapp-48.png" alt="WhatsApp">
+                        <span class="tooltip">WhatsApp</span>
+                    </a>
+                    <a href="https://x.com/Sjd2701af" target="_blank">
+                        <img src="app/icons8-x-48.png" alt="TwitterX">
+                        <span class="tooltip">TwitterX</span>
+                    </a>
+                    <a href="https://in.pinterest.com/sajidaliaf2701/" target="_blank">
+                        <img src="app/icons8-pinterest-logo-48.png" alt="Pinterest">
+                        <span class="tooltip">Pinterest</span>
+                    </a>
+                    <a href="https://www.behance.net/sajidali188" target="_blank">
+                        <img src="app/icons8-behance-logo-48.png" alt="Behance">
+                        <span class="tooltip">Behance</span>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61572906848172" target="_blank">
+                        <img src="app/icons8-facebook-logo-48.png" alt="Facebook">
+                        <span class="tooltip">Facebook</span>
+                    </a>
+                </div>
             </div>
 
+            <p>&copy; <span id="year"></span> SJD Art Gallery. All rights reserved.
+                <br>Email: <a href="mailto:sjdart.27@gmail.com"> sjdart.27@gmail.com</a>
+            </p>
+            <script>
+                document.getElementById("year").textContent = new Date().getFullYear();
+            </script>
+
+
             <div class="qr-code">
-                <p>Scan to visit:</p>
-                <img src="app/qr link.png" alt="QR Code"><br>
-                <a href="https://qrlink.netlify.app/" target="_blank">QR link</a>
+                <p>Click to visit:</p>
+                <a href="https://qrlink.netlify.app/" target="_blank">
+                    <img src="app/icons8-internet-96.png" alt="external link">
+                    <span class="tooltip">Link Tree</span>
+                </a>
             </div>
         </div>
     </footer>
+
 
 
     <script src="codeJS.js"></script>
